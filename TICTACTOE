@@ -1,0 +1,250 @@
+#include<stdio.h>
+#include<stdbool.h>
+#define SPACE printf("\n");
+
+// GLOBAL VARIABLES
+char p1[20], p2[20];
+char a[9] = {'-','-','-','-','-','-','-','-','-'};
+int choice;
+bool gameEnd=0;
+
+
+// MAIN FUNCTION
+void main(){
+    gameIntro();
+    showBoard();
+    startGame();
+}
+
+
+// GAME INTRO
+void gameIntro(){
+    printf("\t\t\t");
+    printf("**************************");
+    SPACE;SPACE;
+    printf("\t\t\t");
+    printf("\tTIC TAC TOE");
+    SPACE;SPACE;
+    printf("\t\t\t");
+    printf("**************************");
+    SPACE; SPACE;
+    printf("\n\t\t\tEnter player 1 name : ");
+    gets(p1);
+    printf("\n\t\t\tEnter player 2 name : ");
+    gets(p2);
+    system("cls");
+}
+
+
+
+// DISPLAY BOARD
+void showBoard(){
+    SPACE;
+    printf("\n\n\t\t  %c  |  %c  |  %c  \t   1  |  2  |  3   \n", a[0], a[1], a[2]);
+    printf("\t\t  %c  |  %c  |  %c  \t   4  |  5  |  6     \n", a[3], a[4], a[5]);
+    printf("\t\t  %c  |  %c  |  %c  \t   7  |  8  |  9     \n", a[6], a[7], a[8]);
+}
+
+
+
+// DIFFERENT TURNS BETWEEN PLAYERS
+void startGame(){
+    xTurn();
+    oTurn();
+    startGame();
+}
+
+
+
+
+
+// FIRST PLAYER TURN
+void xTurn(){
+
+    printf("%s's turn\n", p1);
+    printf("Enter X in position (1-9): ");
+    scanf("%d", &choice);
+    if(choice==0){
+        printf("\nInvalid input");
+        xTurn();
+
+    }
+    else{
+    choice--;
+    if(choice>=10 || choice<0){
+        printf("\nInvalid input");
+        xTurn();
+    }
+    else{
+
+        if(a[choice]=='X' || a[choice]=='O'){
+            printf("\nAleady Taken");
+            xTurn();
+        }
+
+        else{
+            a[choice] = 'X';
+            system("cls");
+            showBoard();
+            checkWinner();
+        }
+
+    }
+    }
+
+}
+
+
+// SECOND PLAYER TURN
+void oTurn(){
+
+    printf("%s's turn\n", p2);
+    printf("Enter O in position (1-9): ");
+    scanf("%d", &choice);
+    choice--;
+
+    if(choice>=10 || choice==0){
+        printf("\nInvalid input");
+        oTurn();
+    }
+    else{
+        if(a[choice]=='X' || a[choice]=='O'){
+        printf("\nAleady Taken");
+        oTurn();
+        }
+
+        else{
+        a[choice] = 'O';
+        system("cls");
+        showBoard();
+        checkWinner();
+        }
+    }
+}
+
+
+
+// CHECK FOR WINNER WITH THREE OTHER FUNCTIONS
+void checkWinner(){
+
+    checkRow();
+    checkCol();
+    checkDiag();
+}
+
+void checkRow(){
+
+    if(a[0]==a[1] && a[1]==a[2] && a[0]!='-'){
+
+        gameEnd = 1;
+        if(a[0]=='X'){
+            printf("%s is the winner", p1);
+            exit(0);
+        }
+        if(a[0]=='O'){
+            printf("%s is the winner", p2);
+            exit(0);
+        }
+    }
+
+
+    if(a[3]==a[4] && a[4]==a[5] && a[3]!='-'){
+
+        gameEnd = 1;
+        if(a[3]=='X'){
+            printf("%s is the winner", p1);
+            exit(0);
+        }
+        if(a[3]=='O'){
+            printf("%s is the winner", p2);
+            exit(0);
+        }
+    }
+
+
+    if(a[6]==a[7] && a[7]==a[8] && a[6]!='-'){
+
+        gameEnd = 1;
+        if(a[6]=='X'){
+            printf("%s is the winner", p1);
+            exit(0);
+        }
+        if(a[6]=='O'){
+            printf("%s is the winner", p2);
+            exit(0);
+        }
+    }
+}
+
+void checkCol(){
+
+    if(a[0]==a[3] && a[3]==a[6] && a[0]!='-'){
+
+        gameEnd = 1;
+        if(a[3]=='X'){
+            printf("%s is the winner", p1);
+            exit(0);
+        }
+        if(a[3]=='O'){
+            printf("%s is the winner", p2);
+            exit(0);
+        }
+    }
+
+
+    if(a[1]==a[4] && a[4]==a[7] && a[4]!='-'){
+
+        gameEnd = 1;
+        if(a[1]=='X'){
+            printf("%s is the winner", p1);
+            exit(0);
+        }
+        if(a[1]=='O'){
+            printf("%s is the winner", p2);
+            exit(0);
+        }
+    }
+
+
+    if(a[2]==a[5] && a[5]==a[8] && a[5]!='-'){
+
+        gameEnd = 1;
+        if(a[5]=='X'){
+            printf("%s is the winner", p1);
+            exit(0);
+        }
+        if(a[5]=='O'){
+            printf("%s is the winner", p2);
+            exit(0);
+        }
+    }
+}
+
+void checkDiag(){
+
+    if(a[0]==a[4] && a[4]==a[8] && a[4]!='-'){
+
+        gameEnd = 1;
+        if(a[4]=='X'){
+            printf("%s is the winner", p1);
+            exit(0);
+        }
+        if(a[4]=='O'){
+            printf("%s is the winner", p2);
+            exit(0);
+        }
+    }
+
+    if(a[2]==a[4] && a[4]==a[6] && a[4]!='-'){
+
+        gameEnd = 1;
+        if(a[4]=='X'){
+            printf("%s is the winner", p1);
+            exit(0);
+        }
+        if(a[4]=='O'){
+            printf("%s is the winner", p2);
+            exit(0);
+        }
+    }
+}

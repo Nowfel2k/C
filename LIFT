@@ -1,6 +1,6 @@
 // CODE BY NAVFAL BY THE WILL OF ALLAH
 #include<stdio.h>
-#include<windows.h>
+// #include<window.h>
 
 // Global Declaration
 static int currentFloor = 0;
@@ -16,7 +16,7 @@ void liftsChangePositions();
 
 
 // Driver Program
-void main(){
+int main(){
 
     int choice;
 
@@ -50,7 +50,7 @@ void main(){
 }
 
 // Go To The Required Floor Program
-void travel(){
+int travel(){
     int floorNumber;
     printf("\nSelect the floor you wanna reach (1-9) : ");
     scanf("%d", &floorNumber);
@@ -60,9 +60,9 @@ void travel(){
 
 // When we leave a lift for a while, the lifts change positions
 void liftsChangePositions(){
-    int temp = firstLift+1;
-    firstLift = secondLift+1;
-    secondLift = thirdLift+1;
+    int temp = (firstLift+1)%9;
+    firstLift = (secondLift+1)%9;
+    secondLift = (thirdLift+1)%9;
     thirdLift = temp;
     main();
 }
@@ -70,7 +70,7 @@ void liftsChangePositions(){
 
 
 // Finds the closest lift
-void checkLiftPositions(){
+int checkLiftPositions() {
     printf("\nFirst lift is at %d floor", firstLift);
     printf("\nSecond lift is at %d floor", secondLift);
     printf("\nThird lift is at %d floor", thirdLift);
@@ -100,7 +100,7 @@ void travelAgent(int floorNumber){
         printf("\n Please wait...\n");
         delayTime = firstLift - currentFloor;
         if(delayTime<0) delayTime *= -1;
-        Sleep((1000*delayTime));
+        // Sleep((1000*delayTime));
 
         liftUsed = 1;
 
@@ -115,7 +115,7 @@ void travelAgent(int floorNumber){
         printf("\n Please wait...\n");
         delayTime = secondLift - currentFloor;
         if(delayTime<0) delayTime *= -1;
-        Sleep((1000*delayTime));
+        // Sleep((1000*delayTime));
 
         liftUsed = 2;
 
@@ -128,7 +128,7 @@ void travelAgent(int floorNumber){
         printf("\n Please wait...\n");
         delayTime = thirdLift - currentFloor;
         if(delayTime<0) delayTime *= -1;
-        Sleep((1000*delayTime));
+        // Sleep((1000*delayTime));
 
         liftUsed = 3;
 
@@ -140,7 +140,7 @@ void travelAgent(int floorNumber){
         printf("\n Please wait...\n");
         delayTime = firstLift - currentFloor;
         if(delayTime<0) delayTime *= -1;
-        Sleep((1000*delayTime));
+        // Sleep((1000*delayTime));
 
         liftUsed = 1;
 
@@ -168,16 +168,17 @@ void travelAgent(int floorNumber){
     }
 
     printf("\n");
-    Sleep(3000);
+    // Sleep(3000);
     printf("\nGoing to floor number %d\n", floorNumber);
 
     // After arriving, the lift will go to the required floor
 
     if(newDelayTime<0) newDelayTime *= -1;
 
-    Sleep((1000*newDelayTime));
+    // Sleep((1000*newDelayTime));
 
     printf("\nYou have arrived to the %d floor\n", currentFloor);
 
     main();
+
 }

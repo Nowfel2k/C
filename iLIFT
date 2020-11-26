@@ -1,4 +1,4 @@
-    /*
+/*
 
 
    CREATING A LIFT WORKING IN AN OFFICE WITH SEVERAL LIFTS AND
@@ -18,7 +18,7 @@
 
 #include<stdio.h>
 #include<limits.h>
-#include<windows.h>
+// #include<windows.h>
 #include<stdlib.h>
 #include<string.h>
 
@@ -51,22 +51,22 @@ void findTravelTime(){
 
     // for first lift
     // current pos - lift pos - direction - distance
-    if(currentFloor<first.position && strcmpi(first.direction,"down")==0){
+    if(currentFloor<first.position && strcmp(first.direction,"down")==0){
         first.distance = first.position - currentFloor;
     }
 
-    else if(currentFloor<first.position && strcmpi(first.direction, "down")!=0){
+    else if(currentFloor<first.position && strcmp(first.direction, "down")!=0){
         first.distance = 0;
         first.distance += 2*(12-first.position); // now it is at the same position as before
         // but direction is DOWN
         first.distance += first.position-currentFloor;
     }
 
-    else if(currentFloor>first.position && strcmpi(first.direction,"up")==0){
+    else if(currentFloor>first.position && strcmp(first.direction,"up")==0){
         first.distance = currentFloor - first.position;
     }
 
-    else if(currentFloor>first.position && strcmpi(first.direction,"up")!=0){
+    else if(currentFloor>first.position && strcmp(first.direction,"up")!=0){
         first.distance = 0;
         first.distance += 2*(first.position); // now it is at the same position as before
         // but direction is UP
@@ -79,22 +79,22 @@ void findTravelTime(){
 
     // for second lift
     // current pos - lift pos - direction - distance
-    if(currentFloor<second.position && strcmpi(second.direction,"down")==0){
+    if(currentFloor<second.position && strcmp(second.direction,"down")==0){
         second.distance = second.position - currentFloor;
     }
 
-    else if(currentFloor<second.position && strcmpi(second.direction, "down")!=0){
+    else if(currentFloor<second.position && strcmp(second.direction, "down")!=0){
         second.distance = 0;
         second.distance += 2*(12-second.position); // now it is at the same position as before
         // but direction is DOWN
         second.distance += second.position-currentFloor;
     }
 
-    else if(currentFloor>second.position && strcmpi(second.direction,"up")==0){
+    else if(currentFloor>second.position && strcmp(second.direction,"up")==0){
         second.distance = currentFloor - second.position;
     }
 
-    else if(currentFloor>second.position && strcmpi(second.direction,"up")!=0){
+    else if(currentFloor>second.position && strcmp(second.direction,"up")!=0){
         second.distance = 0;
         second.distance += 2*(second.position); // now it is at the same position as before
         // but direction is UP
@@ -110,22 +110,22 @@ void findTravelTime(){
 
     // for third lift
     // current pos - lift pos - direction - distance
-    if(currentFloor<third.position && strcmpi(third.direction,"down")==0){
+    if(currentFloor<third.position && strcmp(third.direction,"down")==0){
         third.distance = third.position - currentFloor;
     }
 
-    else if(currentFloor<third.position && strcmpi(third.direction, "down")!=0){
+    else if(currentFloor<third.position && strcmp(third.direction, "down")!=0){
         third.distance = 0;
         third.distance += 2*(12-third.position); // now it is at the same position as before
         // but direction is DOWN
         third.distance += third.position-currentFloor;
     }
 
-    else if(currentFloor>third.position && strcmpi(third.direction,"up")==0){
+    else if(currentFloor>third.position && strcmp(third.direction,"up")==0){
         third.distance = currentFloor - third.position;
     }
 
-    else if(currentFloor>third.position && strcmpi(third.direction,"up")!=0){
+    else if(currentFloor>third.position && strcmp(third.direction,"up")!=0){
         third.distance = 0;
         third.distance += 2*(third.position); // now it is at the same position as before
         // but direction is UP
@@ -162,6 +162,4 @@ int main(){
     displayChosenLift();
 return 0;
 }
-
-
 

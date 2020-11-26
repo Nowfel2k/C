@@ -2,7 +2,8 @@
 #include<stdio.h>   // Default header
 #include<string.h>  // Used for strcpy function
 #include<stdbool.h> // Boolean used to check availability
-#include<windows.h> // Used for Sleep function
+// #include<windows.h> 
+// Used for Sleep function
 
 
 char destination[20]; // Global variable so it is accessible to all functions
@@ -62,7 +63,7 @@ int main(){
 
 // OLA Application with four choices
 void openOLA(){
-    Sleep(3000);
+    // Sleep(3000);
     int request;
     printf("\n\n\nPress 1 to book a taxi"\
            "\nPress 2 to check the nearest ola"\
@@ -112,13 +113,13 @@ void viewAllTaxi(){
 
 
 // To book the taxis which are available
-void bookTaxi(){
+int bookTaxi(){
     int bookThis, timeToCome;
     char bookedTaxi[20];
 
 
 
-    Sleep(2000);
+    // Sleep(2000);
 
     if(first.available) printf("\n\n1- %s available %d meters away", first.type, first.distance);
     if(second.available) printf("\n2- %s available %d meters away", second.type, second.distance);
@@ -202,22 +203,22 @@ void bookTaxi(){
         bookTaxi();
     }
 
-    Sleep(2000);
+    // Sleep(2000);
     printf("\n\nYour OTP number is 61695");
 
-    Sleep(1000);
+    // Sleep(1000);
 
     printf("\n\nYour vehicle is arriving");
 
-    Sleep(timeToCome);
+    // Sleep(timeToCome);
 
     printf("\n\nYour vehicle has arrived");
 
-    Sleep(1000);
+    // Sleep(1000);
 
     printf("\n\nEnjoy your travel to %s\n\n", destination);
 
-    Sleep(5000);
+    // Sleep(5000);
 
     exit(0);
 

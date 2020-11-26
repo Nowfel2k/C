@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<conio.h>
 #include<string.h>
 #include<ctype.h>
 #include<stdbool.h>
@@ -109,7 +108,7 @@ void search_book(book_info* book_list) {
 
             for(int i = 0 ; i <= top ; i++) {
 
-                if(!strcmpi(book_list[i].book_name, search_book_name)) {
+                if(!strcmp(book_list[i].book_name, search_book_name)) {
                    printf("\nNumber of book is %d", i+1);
                    found_Book_Name = true;
                 }
@@ -134,7 +133,7 @@ void search_book(book_info* book_list) {
 
             for(int i = 0 ; i <= top ; i++) {
 
-                if(!strcmpi(book_list[i].writer.name, search_writer_name)) {
+                if(!strcmp(book_list[i].writer.name, search_writer_name)) {
                    printf("\nNumber of book is %d", i+1);
                    found_Writer_Name = true;
                 }
@@ -158,7 +157,7 @@ void search_book(book_info* book_list) {
 
             for(int i = 0 ; i <= top ; i++) {
 
-                if(!strcmpi(book_list[i].writer.surname, search_writer_surname)) {
+                if(!strcmp(book_list[i].writer.surname, search_writer_surname)) {
                    printf("\nNumber of book is %d", i+1);
                    found_Writer_Surname = true;
                 }
@@ -316,7 +315,7 @@ void find_writer_info(book_info* book_list, char* book_name) {
 
 
     for(int i = 0 ; i <= top ; i++) {
-        if(strcmpi(book_name, book_list[i].book_name)) {
+        if(strcmp(book_name, book_list[i].book_name)) {
 
             if(i == top) {
                 printf("%s is not found in the list\n", book_name);
